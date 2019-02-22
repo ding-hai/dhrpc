@@ -1,4 +1,4 @@
 package com.dinghai.server;
 
-public class A {
+public class DHRpcServer {
 }

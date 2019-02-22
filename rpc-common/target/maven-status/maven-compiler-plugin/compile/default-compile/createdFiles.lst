@@ -1,0 +1,5 @@
+com/dinghai/common/annotation/RpcServer.class
+com/dinghai/common/serialize/SerializeUtil.class
+com/dinghai/common/bean/RpcRequest.class
+com/dinghai/common/annotation/RpcClient.class
+com/dinghai/common/bean/RpcResponse.class

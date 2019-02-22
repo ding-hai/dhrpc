@@ -20,7 +20,7 @@ public class SocketAcceptor implements Runnable{
                 .childOption(ChannelOption.SO_KEEPALIVE, true)
                 .childHandler(new SocketInitializer());
         try {
-
+            System.out.println("rpc-server:绑定在端口6666上");
             ChannelFuture future = serverBootstrap.bind(6666).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {

@@ -16,14 +16,18 @@ public class SocketDecoderHandler extends ByteToMessageDecoder {
         if (byteBuf.readableBytes() < 4) {
             return;
         }
-        int len = byteBuf.readInt();
         byteBuf.markReaderIndex();
+        int len = byteBuf.readInt();
+        System.out.println("rpc-client:message len should be " + len);
+
         if (byteBuf.readableBytes() < len) {
             byteBuf.resetReaderIndex();
         } else {
             byte[] bytes = new byte[byteBuf.readableBytes()];
             byteBuf.readBytes(bytes);
+            System.out.println("rpc-client:read byte length="+bytes.length);
             RpcResponse response = SerializeUtil.deserialize(bytes, RpcResponse.class);
+            System.out.println("rpc-client:response="+response);
             list.add(response);
         }
     }

@@ -1,5 +1,8 @@
 package com.dinghai.common.bean;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+@JsonIgnoreProperties("error")
 public class RpcResponse {
     private String responseId;
     private Object result;
@@ -31,5 +34,14 @@ public class RpcResponse {
 
     public void setCause(Throwable cause) {
         this.cause = cause;
+    }
+
+    @Override
+    public String toString() {
+        return "RpcResponse{" +
+                "responseId='" + responseId + '\'' +
+                ", result=" + result +
+                ", cause=" + cause +
+                '}';
     }
 }

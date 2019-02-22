@@ -13,6 +13,7 @@ public class SerializeUtil {
     }
 
     public static  <T> T deserialize(byte[] bytes, Class<T> cls) throws IOException {
+        System.out.println("deserialize "+bytes.length);
         return mapper.readValue(bytes, cls);
     }
 }

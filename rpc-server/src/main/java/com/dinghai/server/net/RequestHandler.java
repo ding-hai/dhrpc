@@ -17,13 +17,16 @@ public class RequestHandler extends SimpleChannelInboundHandler<RpcRequest> {
         String methodName =  request.getMethodName();
         Class<?>[] parameterTypes = request.getParameterTypes();
         Object[] parameters = request.getParameters();
+        System.out.println("rpc-server:className=" + className + " methodName=" + methodName);
         try {
             Object targetObject = SpringBeanFactory.getBean(Class.forName(className));
             Method targetMethod = targetObject.getClass().getMethod(methodName, parameterTypes);
-            Object result = targetMethod.invoke(parameters);
+            Object result = targetMethod.invoke(targetObject,parameters);
+            System.out.println("rpc-server:result="+result);
             response.setResult(result);
         } catch (Throwable cause) {
             response.setCause(cause);
+            cause.printStackTrace();
 
         }
 

@@ -12,5 +12,6 @@ public class SocketEncoderHandler extends MessageToByteEncoder {
         int len = bytes.length;
         byteBuf.writeInt(len);
         byteBuf.writeBytes(bytes);
+        System.out.println("rpc-server:write byte length="+bytes.length);
     }
 }
