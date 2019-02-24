@@ -1,18 +1,18 @@
-package com.dinghai.client.config;
+package com.dinghai.common.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-
+@Component
 public class ZookeeperConfig {
 
-    @Value("${dhrpc.client.zk.root}")
+    @Value("${dhrpc.cluster.zk.root}")
     private String root;
 
-    @Value("${dhrpc.client.zk.port}")
+    @Value("${dhrpc.cluster.zk.port}")
     private int port;
 
-    @Value("${dhrpc.client.zk.host}")
+    @Value("${dhrpc.cluster.zk.host}")
     private String host;
 
     public String getRoot() {

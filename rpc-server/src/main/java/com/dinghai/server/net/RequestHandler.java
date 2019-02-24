@@ -3,11 +3,15 @@ package com.dinghai.server.net;
 import com.dinghai.common.bean.RpcRequest;
 import com.dinghai.common.bean.RpcResponse;
 import com.dinghai.server.utils.SpringBeanFactory;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
+import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
 
+@Component
+@ChannelHandler.Sharable
 public class RequestHandler extends SimpleChannelInboundHandler<RpcRequest> {
     @Override
     protected void channelRead0(ChannelHandlerContext channelHandlerContext, RpcRequest request) throws Exception {
