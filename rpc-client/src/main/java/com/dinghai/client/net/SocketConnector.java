@@ -1,5 +1,6 @@
 package com.dinghai.client.net;
 
+import com.dinghai.client.bean.RpcServiceProvider;
 import com.dinghai.client.pool.RequestManager;
 import com.dinghai.client.util.SpringBeanFactory;
 import io.netty.bootstrap.Bootstrap;
@@ -20,9 +21,11 @@ public class SocketConnector implements Runnable{
 
 
     private SocketInitializer socketInitializer;
+    private RpcServiceProvider rpcServiceProvider;
 
 
-    public SocketConnector(String requestId, CountDownLatch latch) {
+    public SocketConnector(String requestId, CountDownLatch latch, RpcServiceProvider rpcServiceProvider) {
+        this.rpcServiceProvider = rpcServiceProvider;
         this.requestId = requestId;
         this.latch = latch;
         this.socketInitializer = SpringBeanFactory.getBean(SocketInitializer.class);
@@ -35,8 +38,9 @@ public class SocketConnector implements Runnable{
         Bootstrap bootstrap = new Bootstrap();
         bootstrap.group(bossGroup)
                 .channel(NioSocketChannel.class)
-                .remoteAddress("localhost", 6666)
+                .remoteAddress(rpcServiceProvider.getHost(), rpcServiceProvider.getPort())
                 .handler(socketInitializer);
+
         try {
             ChannelFuture future = bootstrap.connect().sync();
             if(future.isSuccess()){
