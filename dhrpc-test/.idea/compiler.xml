@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="service-consumer" />
+        <module name="service-interface" />
+        <module name="service-provider" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="dhrpc-test" target="1.8" />
+      <module name="service-consumer" target="1.8" />
+      <module name="service-interface" target="1.7" />
+      <module name="service-provider" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
